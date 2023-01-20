@@ -1,0 +1,180 @@
+Lab exercises for Compilers 2022/23
+===============================================
+
+This repository contains the specifications for the three lab exercises for the Compilers module.
+
+The three exercises are:
+
+1 - [Lexers and regular expressions](1-regexes) (due Tue 31 Jan at 23:59).
+
+2 - [Parsers and ASTs](2-parsers) (due Tue 14 Feb at 23:59).
+
+3 - [Code Generation](3-codegen) (due Tue 28 Feb at 23:59).
+
+The primary purpose of the lab exercises is to ensure that everyone learns the basic skills needed for the coursework. They are not designed to be too challenging, but they do require you to get to grips with several tools and concepts that you will need later.
+
+
+Assessment and Feedback
+=======================
+
+The three exercises are equally weighted, and are together worth 20% of your Compilers mark (and hence 10% of your IAC mark).
+
+The exercises will be marked in a largely automated fashion. I will compile your code and run it against a collection of my own inputs. Please note that it is very important to test that your code compiles and runs correctly. Failure to do so could result a mark of zero for that exercise.
+
+Feedback will be largely in terms of what works and what doesn't work. I hope to provide formal feedback within ten working days. You are also encouraged to seek informal feedback on your code from the teaching assistants and your peers.
+
+
+Environment
+===========
+
+The target environment for the labs (and the coursework) is Ubuntu 20.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
+
+If you want to work on your own machine (which is encouraged), you can install a version of Ubuntu
+quite easily. For this, you may wish to use [VirtualBox](https://www.virtualbox.org/) together with
+[Vagrant](https://www.vagrantup.com/).  Another option for Windows users is to use the [Windows
+Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about), preferably WSL 2
+for the most compatibility.
+
+Vagrant
+-------
+
+This repository contains a [Vagrantfile](Vagrantfile), which is a script that sets up a blank Ubuntu 20.04 environment, and then installs all the tools that the lab exercises require. To start a virtual machine (VM) using Vagrant, follow these steps.
+
+- Open a shell in this directory.
+
+- Run `vagrant up` to download, install, and configure the VM.
+
+- Run `vagrant ssh` to log into the VM.
+
+- Run `cd /vagrant` : This will put you in the same directory, with
+  your host files shared with the VM.
+
+You can then use command line build tools in the VM, while editing
+the source files in your host editor.
+
+If you want to stop the machine,
+
+- Run `exit` to exit the session,
+
+- Run `vagrant halt` to shut down the virtual machine.
+
+If you later run `vagrant up` again, it will not need to download the VM from scratch.
+
+Windows using WSL
+-----------------
+
+[WSL](https://docs.microsoft.com/en-us/windows/wsl/install) is a builtin linux environment in
+Windows, which makes it much easier to work with than a VM.  It is then recommended to use [WSL
+2](https://docs.microsoft.com/en-us/windows/wsl/basic-commands#set-wsl-version-to-1-or-2) to get the
+most compatibility with the Linux environment used by Vagrant above.
+
+> **NOTE:** When using WSL, there might be slight incompatibilities with the lab environment used
+> for marking, so to be sure that everything works, it's always recommended to test the repository
+> on a full version of Ubuntu 20.04 using Vagrant before submitting.
+
+To set up the lab environment, the following packages will be needed:
+
+```shell
+sudo apt-get update
+# Standard build tools
+sudo apt-get -y install g++ gdb make dos2unix git
+# Compiler build tools
+sudo apt-get -y install bison flex
+# MIPS cross-compiler stuff
+sudo apt-get -y install g++-mips-linux-gnu gdb-multiarch
+# QEMU run-time emulator
+sudo apt-get -y install qemu
+```
+
+It should then be possible to follow along with the lab normally.
+
+
+Your `git` repository
+======================
+
+Setting up your repository
+--------------------------
+
+A private repository has been created for you, which you can clone using the following command (but replace `${LOGIN}` with your college login):
+````
+git clone https://github.com/LangProc/langproc-2022-lab-${LOGIN}.git
+````
+
+You will need to use a personal access token (PAT) to authenticate yourself. You can set up a token by following [these instructions](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Alternatively, you could clone the repository using SSH, having set up an SSH key by following [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+Using your repository
+---------------------
+
+You are free to include any files you wish in your repository, such as notes. However, try not check in compiled programs or large binary files. Repositories should contains the sources and instructions for binaries, but `git` does not deal well with binary files. Most repositories should contain a [.gitignore](https://git-scm.com/docs/gitignore) file, which gives patterns for files that should not be committed. There is [one included here](.gitignore) which covers a few things, but feel free to add other temporary and binary files that your system might produce.
+
+You are encouraged to commit (and push) to your repository regularly. This is for two reasons:
+- If you lose your laptop, you only lose the work you have done since your last push.
+- An independently verifiable history of commits allows you to make a strong case that you have not plagiarised your work.
+
+Moreover, when it comes to working in pairs for the coursework, regular commits (and pushes) will help to reduce the severity of merge conflicts.
+
+Synchronising with the specification repository
+-----------------------------------------------
+
+If there are any changes to the specification (e.g. bugs or updates), you can incorporate them into your version by pulling again from the specification repo. First you need to make sure it is included as a "remote":
+````
+git remote add spec https://github.com/LangProc/langproc-2022-lab.git
+````
+If you now list the remotes, you should see both "origin" (your private repo), and "spec" (the specification repo):
+````
+git remote -v
+````
+You can now integrate changes from the specification repo by pulling from it:
+````
+git pull spec master
+````
+
+If you have changed a file that also changed in the specification, then you may need to commit locally first. Look carefully at any incoming changes due to the pull, and make sure you want to accept them.
+
+Submission process
+==================
+
+Submission of code is via your `git` repository. Make sure you have committed and pushed to GitHub all the files that your project needs. You are _strongly_ encouraged to clone it into a different directory and then test again, just in case you are relying on something that wasn't committed.
+
+Once your code is committed, note the [commit hash](https://blog.thoughtram.io/git/2014/11/18/the-anatomy-of-a-git-commit.html)
+of your current revision:
+
+````
+git log -1
+````
+This will produce something like:
+````
+ubuntu@ubuntu-xenial:/vagrant$ git log -1
+commit 94d8419b20c78da86415bea7236d3719915977a3
+Author: John Wickerson <j.wickerson@imperial.ac.uk>
+Date:   Mon Jan 07 14:26:40 2018 +0000
+
+    All tests passing.
+````
+
+The commit hash of this revision is `94d8419b20c78da86415bea7236d3719915977a3` which is a cryptographic hash over all the files in your repository, including the history of all the files. The hash produced on your local machine will also match the hash calculated by GitHub.
+
+So take your hash (and just the hash), and submit it via Teams.  Even if GitHub goes down, you can later on prove that the existence of your hash in Teams means you must have done the work associated with the hash. The hash in Teams will also be the exact revision of your repository that will get checked out of GitHub and tested. So you can carry on editing and modifying the repository, but only the commit with the hash submitted to Teams will be tested.
+
+To summarise:
+
+1. Test your code on your machine.
+
+2. Commit your code to your local repo.
+
+3. Note the commit hash (`git log -1`).
+
+4. Push the code to GitHub.
+
+5. Check that the commit hash in the GitHub website matches your local hash.
+
+6. **Strongly recommended**: clone your code to a completely different directory, and test it again.
+
+7. Submit the hash via Teams.
+
+You can repeat this process as many times as you want, up until the deadline.
+
+Acknowledgements
+================
+
+The exercises were devised by Dr David Thomas (course lecturer until 2017-18), and are nowadays maintained by [Dr John Wickerson](https://johnwickerson.github.io/).
