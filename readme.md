@@ -40,7 +40,7 @@ You can enter the virtual machine described by the Dockerfile by going to the di
 
     docker build -t "compilers_labs" .
 	
-Then enter the virtual machine by running:
+(The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then enter the virtual machine by running:
 
     docker run -it -v `pwd`:`pwd` -w `pwd` compilers_labs
 	
