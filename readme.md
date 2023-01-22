@@ -17,77 +17,38 @@ The primary purpose of the lab exercises is to ensure that everyone learns the b
 Assessment and Feedback
 =======================
 
-The three exercises are equally weighted, and are together worth 20% of your Compilers mark (and hence 10% of your IAC mark).
+The three exercises are equally weighted, and are together worth 20% of your Compilers mark (and hence 10% of your overall IAC mark).
 
 The exercises will be marked in a largely automated fashion. I will compile your code and run it against a collection of my own inputs. Please note that it is very important to test that your code compiles and runs correctly. Failure to do so could result a mark of zero for that exercise.
 
-Feedback will be largely in terms of what works and what doesn't work. I hope to provide formal feedback within ten working days. You are also encouraged to seek informal feedback on your code from the teaching assistants and your peers.
+Feedback will be largely in terms of what doesn't work, if anything. I hope to provide feedback within ten working days. You are also encouraged to seek informal feedback on your code from the teaching assistants and from your peers.
 
 
-Environment
-===========
+Test environment
+================
 
-The target environment for the labs (and the coursework) is Ubuntu 20.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
+The target environment for the labs (and the coursework) is Ubuntu 20.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build in my test environment. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
 
-If you want to work on your own machine (which is encouraged), you can install a version of Ubuntu
-quite easily. For this, you may wish to use [VirtualBox](https://www.virtualbox.org/) together with
-[Vagrant](https://www.vagrantup.com/).  Another option for Windows users is to use the [Windows
-Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about), preferably WSL 2
-for the most compatibility.
+If you want to work on your own machine, you can install a version of Ubuntu
+quite easily. For this, you may wish to use [Docker](https://www.docker.com/), or you may wish to use [VirtualBox](https://www.virtualbox.org/) with
+[Vagrant](https://www.vagrantup.com/). Another option for Windows users is to use the [Windows
+Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about).
 
-Vagrant
--------
+This repository contains a [Dockerfile](Dockerfile), which is a script that sets up a blank Ubuntu 20.04 environment, and then installs all the tools that the lab exercises require. If you configure your testing environment to match the Dockerfile script, you should be fine.
 
-This repository contains a [Vagrantfile](Vagrantfile), which is a script that sets up a blank Ubuntu 20.04 environment, and then installs all the tools that the lab exercises require. To start a virtual machine (VM) using Vagrant, follow these steps.
+You can enter the virtual machine described by the Dockerfile by going to the directory that contains the Dockerfile and running the following series of commands. First, create the virtual machine "image" by running:
 
-- Open a shell in this directory.
+    docker build -t "compilers_labs" .
+	
+Then enter the virtual machine by running:
 
-- Run `vagrant up` to download, install, and configure the VM.
+    docker run -it -v `pwd`:`pwd` -w `pwd` compilers_labs
+	
+You are now in an Ubuntu 20.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
 
-- Run `vagrant ssh` to log into the VM.
+When you're finished, you can leave the shell by typing:
 
-- Run `cd /vagrant` : This will put you in the same directory, with
-  your host files shared with the VM.
-
-You can then use command line build tools in the VM, while editing
-the source files in your host editor.
-
-If you want to stop the machine,
-
-- Run `exit` to exit the session,
-
-- Run `vagrant halt` to shut down the virtual machine.
-
-If you later run `vagrant up` again, it will not need to download the VM from scratch.
-
-Windows using WSL
------------------
-
-[WSL](https://docs.microsoft.com/en-us/windows/wsl/install) is a builtin linux environment in
-Windows, which makes it much easier to work with than a VM.  It is then recommended to use [WSL
-2](https://docs.microsoft.com/en-us/windows/wsl/basic-commands#set-wsl-version-to-1-or-2) to get the
-most compatibility with the Linux environment used by Vagrant above.
-
-> **NOTE:** When using WSL, there might be slight incompatibilities with the lab environment used
-> for marking, so to be sure that everything works, it's always recommended to test the repository
-> on a full version of Ubuntu 20.04 using Vagrant before submitting.
-
-To set up the lab environment, the following packages will be needed:
-
-```shell
-sudo apt-get update
-# Standard build tools
-sudo apt-get -y install g++ gdb make dos2unix git
-# Compiler build tools
-sudo apt-get -y install bison flex
-# MIPS cross-compiler stuff
-sudo apt-get -y install g++-mips-linux-gnu gdb-multiarch
-# QEMU run-time emulator
-sudo apt-get -y install qemu
-```
-
-It should then be possible to follow along with the lab normally.
-
+    exit
 
 Your `git` repository
 ======================

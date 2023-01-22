@@ -9,12 +9,14 @@ RUN apt-get install -y \
     autoconf \
     bc \
     bison \
+    dos2unix \
     gcc \
+    g++ \
+    gdb \
     make \
     flex \
+    qemu \
     build-essential \
     ca-certificates \
     curl \
     device-tree-compiler
-
-ENTRYPOINT [ "/bin/bash" ]
