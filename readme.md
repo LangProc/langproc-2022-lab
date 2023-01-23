@@ -42,7 +42,7 @@ You can enter the virtual machine described by the Dockerfile by going to the di
 	
 (The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then create a "container" so that you can enter the virtual machine by running:
 
-    docker run -it -v `pwd`:`pwd` -w `pwd` --name "compilers_labs_machine" compilers_labs
+    docker run -it -v "`pwd`:`pwd`" -w "`pwd`" --name "compilers_labs_machine" compilers_labs
 	
 You are now in an Ubuntu 20.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
 
