@@ -30,9 +30,12 @@ Test environment
 The target environment for the labs (and the coursework) is Ubuntu 20.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build in my test environment. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
 
 If you want to work on your own machine, you can install a version of Ubuntu
-quite easily. For this, you may wish to use [Docker](https://www.docker.com/), or you may wish to use [VirtualBox](https://www.virtualbox.org/) with
-[Vagrant](https://www.vagrantup.com/). Another option for Windows users is to use the [Windows
-Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about). A guide to each of the installations is found below.
+quite easily. For this, we recommend 3 options:
+- [Docker](#docker)
+- [Vagrant with Virtual Box](#vagrant)
+- [Windows Subsystem for Linux (WSL) - Windows Only](#wsl-windows-only)
+
+A guide to each of the installations is found below.
 
 ## Docker
 **Requirements:**
