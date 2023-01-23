@@ -99,7 +99,7 @@ If you later run `vagrant up` again, it will not need to download the VM from sc
 - [Windows
 Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about)
 
-If you're using WSL, simply ensure you have all the right packages installed by running:
+Check which version of WSL you're using by running `lsb_release -d` and check that it's at least Ubuntu 22.04. Once you're on the correct version, simply ensure you have all the right packages installed by running:
 ```
 sudo apt-get install -y lsb-release g++ gdb make dos2unix git bison flex qemu
 ```
