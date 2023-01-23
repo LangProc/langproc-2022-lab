@@ -99,7 +99,7 @@ if [[ $? -ne 0 ]]; then
     echo "Warning: This appears not to be a Linux environment"
     echo "         Make sure you do a final run on a lab machine or an Ubuntu VM"
 else
-    grep -q "Ubuntu 20.04" <(echo $RELEASE)
+    grep -q "Ubuntu 22.04" <(echo $RELEASE)
     FOUND=$?
 
     if [[ $FOUND -ne 0 ]]; then

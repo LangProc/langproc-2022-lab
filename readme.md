@@ -27,7 +27,7 @@ Feedback will be largely in terms of what doesn't work, if anything. I hope to p
 Test environment
 ================
 
-The target environment for the labs (and the coursework) is Ubuntu 20.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build in my test environment. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
+The target environment for the labs (and the coursework) is Ubuntu 22.04. It is strongly suggested that you do your final testing before each submission in this environment, otherwise you are likely to hit incompatibility problems, which may mean your program won't build in my test environment. Those using Mac OS should watch out in particular, as the build environment is often subtly different.
 
 If you want to work on your own machine, you can install a version of Ubuntu
 quite easily. For this, we recommend 3 options:
@@ -41,7 +41,7 @@ A guide to each of the installations is found below.
 **Requirements:**
 - [Docker](https://www.docker.com/)
 
-This repository contains a [Dockerfile](Dockerfile), which is a script that sets up a blank Ubuntu 20.04 environment, and then installs all the tools that the lab exercises require. If you configure your testing environment to match the Dockerfile script, you should be fine.
+This repository contains a [Dockerfile](Dockerfile), which is a script that sets up a blank Ubuntu 22.04 environment, and then installs all the tools that the lab exercises require. If you configure your testing environment to match the Dockerfile script, you should be fine.
 
 You can enter the virtual machine described by the Dockerfile by going to the directory that contains the Dockerfile and running the following series of commands. First, create the virtual machine "image" by running:
 
@@ -51,7 +51,7 @@ You can enter the virtual machine described by the Dockerfile by going to the di
 
     docker run -it -v "`pwd`:`pwd`" -w "`pwd`" --name "compilers_labs_machine" compilers_labs
 	
-You are now in an Ubuntu 20.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
+You are now in an Ubuntu 22.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
 
 When you're finished, you can leave the shell by typing:
 
