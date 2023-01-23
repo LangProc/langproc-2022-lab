@@ -40,15 +40,26 @@ You can enter the virtual machine described by the Dockerfile by going to the di
 
     docker build -t "compilers_labs" .
 	
-(The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then enter the virtual machine by running:
+(The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then create a "container" so that you can enter the virtual machine by running:
 
-    docker run -it -v `pwd`:`pwd` -w `pwd` compilers_labs
+    docker run -it -v `pwd`:`pwd` -w `pwd` --name "compilers_labs_machine" compilers_labs
 	
 You are now in an Ubuntu 20.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
 
 When you're finished, you can leave the shell by typing:
 
     exit
+	
+If you want to clean up, you can remove the container you created by typing:
+
+	docker ps -a
+	docker rm compilers_labs_machine
+	
+and then removing the image by typing:
+
+	docker images
+	docker rmi compilers_labs
+
 
 Your `git` repository
 ======================
@@ -138,4 +149,4 @@ You can repeat this process as many times as you want, up until the deadline.
 Acknowledgements
 ================
 
-The exercises were devised by Dr David Thomas (course lecturer until 2017-18), and are nowadays maintained by [Dr John Wickerson](https://johnwickerson.github.io/).
+The exercises were devised by David Thomas (course lecturer until 2017-18), and are nowadays maintained by [John Wickerson](https://johnwickerson.github.io/). Thanks to Yann Herklotz and James Nock for suggesting various improvements.
