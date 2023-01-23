@@ -32,7 +32,11 @@ The target environment for the labs (and the coursework) is Ubuntu 20.04. It is 
 If you want to work on your own machine, you can install a version of Ubuntu
 quite easily. For this, you may wish to use [Docker](https://www.docker.com/), or you may wish to use [VirtualBox](https://www.virtualbox.org/) with
 [Vagrant](https://www.vagrantup.com/). Another option for Windows users is to use the [Windows
-Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about).
+Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about). A guide to each of the installations is found below.
+
+## Docker
+**Requirements:**
+- [Docker](https://www.docker.com/)
 
 This repository contains a [Dockerfile](Dockerfile), which is a script that sets up a blank Ubuntu 20.04 environment, and then installs all the tools that the lab exercises require. If you configure your testing environment to match the Dockerfile script, you should be fine.
 
@@ -59,6 +63,44 @@ and then removing the image by typing:
 
 	docker images
 	docker rmi compilers_labs
+	
+## Vagrant
+**Requirements:**
+- [VirtualBox](https://www.virtualbox.org/)
+- [Vagrant](https://www.vagrantup.com/)
+
+This repository contains a [Vagrantfile](Vagrantfile), which is a script that sets up a blank Ubuntu environment, and then installs all the tools that the lab exercises require. To start a virtual machine (VM) using Vagrant, follow these steps.
+
+- Open a shell in this directory.
+
+- Run `vagrant up` to download, install, and configure the VM.
+
+- Run `vagrant ssh` to log into the VM.
+
+- Run `cd /vagrant` : This will put you in the same directory, with
+  your host files shared with the VM.
+
+You can then use command line build tools in the VM, while editing
+the source files in your host editor.
+
+If you want to stop the machine,
+
+- Run `exit` to exit the session,
+
+- Run `vagrant halt` to shut down the virtual machine.
+
+If you later run `vagrant up` again, it will not need to download the VM from scratch.
+
+	
+## WSL (Windows only)
+- [Windows
+Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about)
+
+If you're using WSL, simply ensure you have all the right packages installed by running:
+```
+sudo apt-get install -y lsb-release g++ gdb make dos2unix git bison flex qemu
+```
+From here you should be good to go!
 
 
 Your `git` repository
