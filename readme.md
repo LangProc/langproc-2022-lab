@@ -143,7 +143,7 @@ git remote -v
 ````
 You can now integrate changes from the specification repo by pulling from it:
 ````
-git pull spec master
+git pull spec main
 ````
 
 If you have changed a file that also changed in the specification, then you may need to commit locally first. Look carefully at any incoming changes due to the pull, and make sure you want to accept them.
