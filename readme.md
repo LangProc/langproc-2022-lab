@@ -196,4 +196,4 @@ You can repeat this process as many times as you want, up until the deadline.
 Acknowledgements
 ================
 
-The exercises were devised by David Thomas (course lecturer until 2017-18), and are nowadays maintained by [John Wickerson](https://johnwickerson.github.io/). Thanks to Yann Herklotz and James Nock for suggesting various improvements.
+The exercises were devised by David Thomas (course lecturer until 2017-18), and are nowadays maintained by [John Wickerson](https://johnwickerson.github.io/). Thanks to Yann Herklotz, James Nock, Simon Staal, and Shuyuan Liu for suggesting various improvements.
