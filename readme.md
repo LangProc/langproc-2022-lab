@@ -69,6 +69,8 @@ and then removing the image by typing:
 	docker images
 	docker rmi compilers_labs
 	
+If you are also using VS Code, and have the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), you can develop directly inside the container by using the [.devcontainer/devcontainer.json](.devcontainer/devcontainer.json) file. Make sure that this `.devcontainer` folder is in the same directory as your `Dockerfile`, then press `View -> Command Palette` in VS Code and search for `>Dev Containers: Reopen in Container`.
+	
 ## Vagrant
 **Requirements:**
 - [VirtualBox](https://www.virtualbox.org/)
