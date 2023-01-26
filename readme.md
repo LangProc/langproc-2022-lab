@@ -45,15 +45,15 @@ A guide to each of the installations is found below.
 
 This repository contains a [Dockerfile](Dockerfile), which is a script that sets up a blank Ubuntu 22.04 environment, and then installs all the tools that the lab exercises require. If you configure your testing environment to match the Dockerfile script, you should be fine.
 
-You can enter the virtual machine described by the Dockerfile by going to the directory that contains the Dockerfile and running the following series of commands. First, create the virtual machine "image" by running:
+You can enter the virtual machine described by the Dockerfile by going to the directory that contains the Dockerfile and running the following series of commands. First, create the virtual machine "image" by running (in Terminal on Mac, or Powershell on Windows):
 
     docker build -t "compilers_labs" .
 	
-(The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then create a "container" so that you can enter the virtual machine by running:
+(The `.` at the end is part of the command, by the way. It tells Docker to look in the current directory for the Dockerfile script.) Then create a "container" so that you can enter the virtual machine by running (in Terminal on Mac, or Powershell on Windows):
 
-    docker run -it -v "`pwd`:`pwd`" -w "`pwd`" --name "compilers_labs_machine" compilers_labs
+    docker run --rm -it -v "${PWD}:/code" -w "/code" --name "compilers_labs_machine" compilers_labs
 	
-You are now in an Ubuntu 22.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v pwd:pwd` and `-w pwd` flags mean that your host machine's files are accessible to your virtual machine.) 
+You are now in an Ubuntu 22.04 shell with all the required tools installed. (By the way, the `-it` flag instructs Docker to create a shell through which you can interact with the virtual machine. The `-v "${PWD}:/code"` and `-w "/code"` flags mean that your host machine's files are accessible to your virtual machine under the `/code` path in the Docker container.) Note that you should only work under the `/code` path as the rest of the container filesystem is temporary, meaning it is removed when you exit the Docker container.
 
 When you're finished, you can leave the shell by typing:
 
