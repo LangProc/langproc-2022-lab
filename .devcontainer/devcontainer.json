@@ -1,0 +1,19 @@
+{
+	"name": "Existing Dockerfile",
+	"build": {
+		"context": "..",
+		"dockerfile": "../Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"eamodio.gitlens",
+				"ms-vsliveshare.vsliveshare",
+				"ms-vscode.makefile-tools",
+				"ms-python.python",
+				"daohong-emilio.yash"
+			]
+		}
+	}
+}
